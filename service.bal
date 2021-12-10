@@ -1,6 +1,7 @@
 import ballerina/http;
 
 listener http:Listener ep = new http:Listener(9090);
+#url: "http://greetingsbugyugyugbb-development-3034125099.dp-development-518-chathurangadassanayake.svc.cluster.local:9090/hello"
 
 service /svc1 on  ep {
 
