@@ -1,6 +1,8 @@
 import ballerina/http;
 
-service /svc1 on new http:Listener(9090) {
+listener http:Listener ep = new http:Listener(9090);
+
+service /svc1 on  ep {
 
     resource function get sayHello(string name) returns string|error {
         if !(name is "") {
@@ -8,17 +10,15 @@ service /svc1 on new http:Listener(9090) {
         }
         return error("name should not be empty!");
     }
-    
     resource function get sayHi(string name) returns string|error {
         if !(name is "") {
             return "svc1-Hi";
         }
         return error("name should not be empty!");
     }
-
 }
 
-service /svc2 on new http:Listener(9090) {
+service /svc2 on  ep {
 
     resource function get sayHello(string name) returns string|error {
         if !(name is "") {
@@ -26,5 +26,5 @@ service /svc2 on new http:Listener(9090) {
         }
         return error("name should not be empty!");
     }
-
+    
 }
