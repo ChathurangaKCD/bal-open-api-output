@@ -1,0 +1,59 @@
+openapi: 3.0.1
+info:
+  title: Svc1
+  version: 0.1.0
+servers:
+- url: "{server}:{port}/svc1"
+  variables:
+    server:
+      default: http://localhost
+    port:
+      default: "9090"
+paths:
+  /sayHello:
+    get:
+      summary: ""
+      operationId: operation_get_/sayHello
+      parameters:
+      - name: name
+        in: query
+        description: the input sting name
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+        "500":
+          description: Found unexpected output
+          content:
+            text/plain:
+              schema:
+                type: string
+  /sayHi:
+    get:
+      operationId: operation_get_/sayHi
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/plain:
+              schema:
+                type: string
+        "500":
+          description: Found unexpected output
+          content:
+            text/plain:
+              schema:
+                type: string
+components: {}
